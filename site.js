@@ -40,14 +40,13 @@
   var replay = document.querySelector(".replay");
   if (replay) replay.addEventListener("click", play);
 
-  // Reveal on view (section heads, legend rows, steps) and the contour band.
+  // The contour band draws once on view. Everything else is simply there.
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
   }, { rootMargin: "0px 0px -12% 0px", threshold: 0.05 });
-  document.querySelectorAll(".reveal, .contours").forEach(function (el) { io.observe(el); });
-  document.querySelectorAll(".legend li").forEach(function (li, i) { li.style.setProperty("--i", i); li.classList.add("reveal"); io.observe(li); });
+  document.querySelectorAll(".contours").forEach(function (el) { io.observe(el); });
 
-  // How it works: the visible step picks the phone state; the gauge follows scroll progress through the steps.
+  // How it works: the visible step picks the phone state; the gauge climbs 0 to 120 m while it is stuck on screen.
   var steps = Array.prototype.slice.call(document.querySelectorAll(".step"));
   var stepsBox = document.querySelector(".steps"), gauge = document.querySelector(".gauge");
   var shots = document.querySelectorAll(".sticky .phone img");
@@ -62,8 +61,9 @@
     }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
     steps.forEach(function (s) { so.observe(s); });
     function onScrollGauge() {
-      var r = stepsBox.getBoundingClientRect(), mid = innerHeight * 0.55;
-      var p = Math.min(1, Math.max(0, (mid - r.top) / r.height));
+      var r = stepsBox.getBoundingClientRect();
+      var stick = parseFloat(getComputedStyle(gauge).top) || 0, travel = r.height - gauge.offsetHeight;
+      var p = travel > 0 ? Math.min(1, Math.max(0, (stick - r.top) / travel)) : 0;
       var pct = (p * 100).toFixed(1) + "%";
       gauge.style.setProperty("--p", pct);
       var m = gauge.querySelector(".marker"); if (m) m.textContent = Math.round(p * 120) + " m";
