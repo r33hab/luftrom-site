@@ -2,6 +2,10 @@
 
 All notable changes to the Luftrom support site. Newest first.
 
+## 2026-10-07
+### Changed
+- Privacy policy for the new app build: what is stored on the device (drones, spots, logbook, checklist, operator ID, certificate dates), that saved spots' coordinates go to MET for the spot list, widget, Siri and notifications, the nearest place name lookup on every check, local notifications, Siri, CSV export, backups, and the User-Agent's link to this site.
+
 ## 2026-10-06
 ### Fixed
 - Sticky header and the sticky "How it works" phone now stick: `overflow-x: hidden` on `body` made it a scroll container, so `position: sticky` never engaged. Both use `clip` now.
