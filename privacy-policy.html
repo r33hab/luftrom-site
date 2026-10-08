@@ -13,7 +13,7 @@
 <link rel="canonical" href="https://r33hab.github.io/luftrom-site/privacy-policy">
 <link rel="stylesheet" href="styles.css">
 <title>Personvernerklæring – Luftrom</title>
-<meta name="description" content="Hva Luftrom gjør med posisjonen din og hva som sendes ut av enheten. Ingen konto, ingen sporing, ingen annonser.">
+<meta name="description" content="Hva Luftrom lagrer på enheten din, hva den gjør med posisjonen din og hva som sendes ut av enheten. Ingen konto, ingen sporing, ingen annonser.">
 </head>
 <body>
 <header class="top">
@@ -34,24 +34,44 @@
   <header>
     <h1 data-lang="nb">Personvernerklæring</h1>
     <h1 data-lang="en">Privacy policy</h1>
-    <p data-lang="nb">Gjelder iOS-appen Luftrom. Sist oppdatert 22. september 2026.</p>
-    <p data-lang="en">Applies to the Luftrom iOS app. Last updated 22 September 2026.</p>
+    <p data-lang="nb">Gjelder iOS-appen Luftrom. Sist oppdatert 8. oktober 2026.</p>
+    <p data-lang="en">Applies to the Luftrom iOS app. Last updated 8 October 2026.</p>
   </header>
 
   <article data-lang="nb">
     <h2>Hvem står bak</h2>
     <p>Luftrom er en uavhengig app for dronepiloter i Norge, utviklet av Kristoffer Lersveen. Den er ikke tilknyttet Luftfartstilsynet, Avinor, Kartverket eller Meteorologisk institutt.</p>
     <h2>Ingen konto, ingen sporing</h2>
-    <p>Appen har ingen brukerkonto, ingen analyseverktøy, ingen annonser og ingen tredjeparts-SDK-er utover kartmotoren MapLibre, som kjører lokalt på enheten. Vi lagrer ingen opplysninger om deg.</p>
-    <h2>Posisjon</h2>
-    <p>Hvis du gir tillatelse, brukes posisjonen din på enheten til å vise hvor du er på kartet og sentrere kartet der. Appen spør om tillatelse først når du trykker på posisjonsknappen. Posisjonen lagres ikke av oss.</p>
-    <h2>Hva som sendes ut av enheten</h2>
-    <p>Når du sjekker et punkt (knappen «Sjekk her» eller et langt trykk på kartet), sendes koordinaten for punktet over kryptert forbindelse (HTTPS) til</p>
+    <p>Appen har ingen brukerkonto, ingen analyseverktøy, ingen annonser og ingen tredjeparts-SDK-er utover kartmotoren MapLibre, som kjører lokalt på enheten. Utvikleren mottar ingen opplysninger om deg, og det du legger inn i appen sendes ikke til noen server.</p>
+    <h2>Det som lagres på enheten</h2>
+    <p>Det du legger inn i Luftrom, lagres bare i appen på enheten din:</p>
     <ul>
-      <li>Kartverket (<code>ws.geonorge.no</code>) for terrenghøyde,</li>
+      <li>dronene dine med navn, klasse, vekt og grenser for vind og temperatur,</li>
+      <li>lagrede steder med navn og koordinater,</li>
+      <li>lagrede områder med navn og form (midtpunkt og radius, eller koordinatene til hjørnene),</li>
+      <li>loggboken: tidspunkt, varighet, sted og koordinater, drone, soner, vær, resultatet av sjekklisten og notatene dine,</li>
+      <li>sjekklisten din,</li>
+      <li>operatør-ID-en din og utløpsdatoene for kompetansebevisene dine.</li>
+    </ul>
+    <p>Widgeten får navnet, koordinatene og sonevurderingen for favorittstedet ditt, og grensene til hoveddronen, gjennom et delt lager på den samme enheten. Dataene synkroniseres ikke mellom enheter. De blir med i sikkerhetskopien av enheten (iCloud eller datamaskin) som andre appdata hvis du har slått på sikkerhetskopi. Sletter du appen, slettes dataene.</p>
+    <h2>Posisjon</h2>
+    <p>Hvis du gir tillatelse, brukes posisjonen din på enheten til å vise hvor du er på kartet, sentrere kartet der og sjekke luftrommet der du står. Appen spør om tillatelse først når du trykker på posisjonsknappen eller ber Siri sjekke der du står. Posisjonen lagres ikke, med mindre du selv lagrer et sted eller logger en flyvning der.</p>
+    <h2>Hva som sendes ut av enheten</h2>
+    <p>Når du sjekker et punkt (knappen «Sjekk her», et langt trykk på kartet eller Siri), sendes koordinaten for punktet over kryptert forbindelse (HTTPS) til</p>
+    <ul>
+      <li>Kartverket (<code>ws.geonorge.no</code>) for terrenghøyde og nærmeste stedsnavn,</li>
       <li>Meteorologisk institutt (<code>api.met.no</code>) for vær og soltider.</li>
     </ul>
+    <p>Koordinatene til de lagrede stedene dine sendes til Meteorologisk institutt for å hente været når du åpner Steder eller et sted, når du spør Siri om et sted, når widgeten oppdaterer seg, og i bakgrunnen for steder der du har slått på varsel om godt flyvær. Navnene på stedene sendes ikke ut.</p>
+    <p>Når du sjekker et område eller åpner et lagret område, sendes midtpunktet til Meteorologisk institutt for vær og til Kartverket for nærmeste stedsnavn, på samme måte som ved en punktsjekk. Vurderingen i listen under Steder regnes ut på enheten. Hjørnene og navnet på området sendes ikke ut.</p>
     <p>Kartfliser lastes fra Kartverket (<code>cache.kartverket.no</code>) etter hvert som du flytter kartet, og søketekst sendes til Kartverkets stedsnavntjeneste (<code>ws.geonorge.no</code>) når du søker. Disse tjenestene ser IP-adressen din og forespørselen, som beskrevet i deres egne personvernerklæringer. Appen identifiserer seg mot MET med en teknisk «User-Agent» som inneholder appnavn, versjon og en kontaktadresse, slik MET krever.</p>
+    <p>Loggboken forlater bare enheten hvis du selv eksporterer den som CSV-fil. Da velger du i delingsmenyen hvor filen skal. Områderapporter (PDF) og KML-filer forlater også bare enheten hvis du selv eksporterer dem. Kartet i PDF-rapporten lastes fra Kartverket (<code>cache.kartverket.no</code>) når du lager rapporten.</p>
+    <h2>Deling</h2>
+    <p>Når du trykker på Del i en sjekk, lager appen et bilde av sjekken og en lenke på enheten. Lenken inneholder koordinatene til punktet du deler, og ikke noe annet. Du velger selv i delingsmenyen hvor bildet og lenken skal, og ingenting sendes til utvikleren. Kartet på bildet hentes fra Kartverket (<code>cache.kartverket.no</code>), som når du flytter kartet. Velger du å lagre delingskortet i Bilder, legger appen bare til det ene bildet og leser aldri resten av bildebiblioteket ditt. Åpner noen lenken uten å ha appen, viser GitHub Pages en nettside som leser koordinatene i nettleseren. Siden har ingen analyseverktøy, sporing eller innhold fra tredjeparter, men GitHub ser IP-adressen og hele adressen, med koordinatene, som for resten av nettstedet.</p>
+    <h2>Varsler</h2>
+    <p>Påminnelser om kompetansebevis og varsler om godt flyvær lages på enheten. Det finnes ingen server som sender varsler. Varslene er av til du slår dem på, og du kan slå dem av igjen i appen eller i innstillingene til iOS.</p>
+    <h2>Siri og Snarveier</h2>
+    <p>Når du bruker Siri eller Snarveier med Luftrom, behandler Apple forespørselen etter sine egne personvernregler. Navnene på de lagrede stedene dine brukes for at Siri skal forstå hvilket sted du mener. Luftrom svarer ikke om lagrede steder mens telefonen er låst.</p>
     <h2>Sonedata</h2>
     <p>Luftfartstilsynets ED-269-soner fra dronesoner.no ligger innebygd i appen og krever ingen nettforbindelse.</p>
     <h2>Barn</h2>
@@ -66,16 +86,36 @@
     <h2>Who is behind the app</h2>
     <p>Luftrom is an independent app for drone pilots in Norway, developed by Kristoffer Lersveen. It is not affiliated with the Norwegian Civil Aviation Authority (Luftfartstilsynet), Avinor, Kartverket or the Norwegian Meteorological Institute.</p>
     <h2>No account, no tracking</h2>
-    <p>The app has no user account, no analytics, no advertising and no third-party SDKs other than the MapLibre map engine, which runs locally on the device. We store no information about you.</p>
-    <h2>Location</h2>
-    <p>If you grant permission, your location is used on the device to show where you are on the map and to centre the map there. The app asks for permission only when you tap the location button. We do not store your location.</p>
-    <h2>What leaves the device</h2>
-    <p>When you check a spot (“Check here” or a long press on the map), the coordinate of that spot is sent over an encrypted connection (HTTPS) to</p>
+    <p>The app has no user account, no analytics, no advertising and no third-party SDKs other than the MapLibre map engine, which runs locally on the device. The developer receives no information about you, and what you enter in the app is not sent to any server.</p>
+    <h2>What is stored on your device</h2>
+    <p>What you enter in Luftrom is stored only in the app on your device:</p>
     <ul>
-      <li>Kartverket (<code>ws.geonorge.no</code>) for terrain height,</li>
+      <li>your drones with name, class, weight and wind and temperature limits,</li>
+      <li>saved spots with name and coordinates,</li>
+      <li>saved areas with name and shape (centre and radius, or the corners' coordinates),</li>
+      <li>the logbook: time, duration, place and coordinates, drone, zones, weather, the checklist result and your notes,</li>
+      <li>your checklist,</li>
+      <li>your operator ID and the expiry dates of your certificates.</li>
+    </ul>
+    <p>The widget receives your favourite spot's name, coordinates and zone verdict, and your primary drone's limits, through shared storage on the same device. The data is not synced between devices. It is included in your device backup (iCloud or computer) like other app data if backups are on. Deleting the app deletes the data.</p>
+    <h2>Location</h2>
+    <p>If you grant permission, your location is used on the device to show where you are on the map, to centre the map there and to check the airspace where you are. The app asks for permission only when you tap the location button or ask Siri to check where you are. Your location is not stored unless you save a spot or log a flight there yourself.</p>
+    <h2>What leaves the device</h2>
+    <p>When you check a spot (“Check here”, a long press on the map or Siri), the coordinate of that spot is sent over an encrypted connection (HTTPS) to</p>
+    <ul>
+      <li>Kartverket (<code>ws.geonorge.no</code>) for terrain height and the nearest place name,</li>
       <li>the Norwegian Meteorological Institute (<code>api.met.no</code>) for weather and sun times.</li>
     </ul>
+    <p>The coordinates of your saved spots are sent to the Norwegian Meteorological Institute to fetch the weather when you open Spots or a spot, when you ask Siri about a spot, when the widget updates, and in the background for spots where you turned on the good-weather notification. Spot names are not sent.</p>
+    <p>When you check an area or open a saved one, its centre is sent to the Norwegian Meteorological Institute for the weather and to Kartverket for the nearest place name, as for a point check. The verdict in the Spots list is worked out on the device. An area's corners and name are not sent.</p>
     <p>Map tiles are loaded from Kartverket (<code>cache.kartverket.no</code>) as you move the map, and search text is sent to Kartverket's place-name service (<code>ws.geonorge.no</code>) when you search. Those services see your IP address and the request, as described in their own privacy policies. The app identifies itself to MET with a technical User-Agent containing the app name, version and a contact address, as MET requires.</p>
+    <p>The logbook only leaves the device if you export it as a CSV file yourself. You then choose in the share sheet where the file goes. Area reports (PDF) and KML files likewise leave the device only if you export them yourself. The map in the PDF report is loaded from Kartverket (<code>cache.kartverket.no</code>) when you make the report.</p>
+    <h2>Sharing</h2>
+    <p>When you tap Share on a check, the app makes an image of the check and a link on the device. The link contains the coordinates of the spot you share and nothing else. You choose in the share sheet where the image and the link go, and nothing is sent to the developer. The map on the image is loaded from Kartverket (<code>cache.kartverket.no</code>), as when you move the map. If you choose to save the share card to Photos, the app only adds that one image and never reads the rest of your photo library. If someone opens the link without the app, GitHub Pages shows a web page that reads the coordinates in their browser. The page has no analytics, tracking or third-party content, but GitHub sees the IP address and the full address, including the coordinates, as for the rest of the site.</p>
+    <h2>Notifications</h2>
+    <p>Certificate reminders and good-weather notifications are created on the device. There is no server that sends notifications. They are off until you turn them on, and you can turn them off again in the app or in iOS settings.</p>
+    <h2>Siri and Shortcuts</h2>
+    <p>When you use Siri or Shortcuts with Luftrom, Apple processes the request under its own privacy policy. The names of your saved spots are used so Siri understands which spot you mean. Luftrom does not answer about saved spots while the phone is locked.</p>
     <h2>Zone data</h2>
     <p>The Civil Aviation Authority's ED-269 zones from dronesoner.no are bundled inside the app and need no connection.</p>
     <h2>Children</h2>
