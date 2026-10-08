@@ -2,6 +2,10 @@
 
 All notable changes to the Luftrom support site. Newest first.
 
+## 2026-10-08
+### Added
+- Landing page for spots shared from the app, `s/?lat=…&lon=…`: the coordinate with an "Open in Luftrom" button and the App Store button, or "This link is not valid". Norwegian or English from the browser language, with the same switch as the main page. No requests to third parties (no web fonts, scripts or analytics), enforced by a Content-Security-Policy; not indexed. `tests/share.test.js` covers the link parsing (`node --test tests/share.test.js`).
+
 ## 2026-10-07
 ### Changed
 - Privacy policy for the new app build: what is stored on the device (drones, spots, logbook, checklist, operator ID, certificate dates), that saved spots' coordinates go to MET for the spot list, widget, Siri and notifications, the nearest place name lookup on every check, local notifications, Siri, CSV export and backups.

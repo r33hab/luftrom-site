@@ -207,3 +207,13 @@ footer p { max-width: none; margin-bottom: .5rem; }
   .js .contours path { stroke-dashoffset: 0; }
   .sticky .phone img, .lang::before, .step, .gauge .fill, .gauge .marker { transition: none; }
 }
+
+/* Share landing (s/): a spot shared from the app, or a notice that the link is broken, then the App Store button.
+   Loaded without the web fonts, so the font tokens fall back to the system face. */
+.share { max-width: 40rem; padding: 3rem 0 4.5rem; }
+.share section { padding: 0; }
+.share [hidden] { display: none !important; }
+.share h1 { font-size: clamp(2.6rem, 9vw, 4rem); margin-bottom: 1rem; }
+.share .coord { font-family: var(--font-mono); font-size: 1.125rem; }
+.share .actions { margin-top: 1.25rem; }
+.share .get { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--sky-line); }
