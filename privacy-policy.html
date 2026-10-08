@@ -34,8 +34,8 @@
   <header>
     <h1 data-lang="nb">Personvernerklæring</h1>
     <h1 data-lang="en">Privacy policy</h1>
-    <p data-lang="nb">Gjelder iOS-appen Luftrom. Sist oppdatert 7. oktober 2026.</p>
-    <p data-lang="en">Applies to the Luftrom iOS app. Last updated 7 October 2026.</p>
+    <p data-lang="nb">Gjelder iOS-appen Luftrom. Sist oppdatert 8. oktober 2026.</p>
+    <p data-lang="en">Applies to the Luftrom iOS app. Last updated 8 October 2026.</p>
   </header>
 
   <article data-lang="nb">
@@ -48,6 +48,7 @@
     <ul>
       <li>dronene dine med navn, klasse, vekt og grenser for vind og temperatur,</li>
       <li>lagrede steder med navn og koordinater,</li>
+      <li>lagrede områder med navn og form (midtpunkt og radius, eller koordinatene til hjørnene),</li>
       <li>loggboken: tidspunkt, varighet, sted og koordinater, drone, soner, vær, resultatet av sjekklisten og notatene dine,</li>
       <li>sjekklisten din,</li>
       <li>operatør-ID-en din og utløpsdatoene for kompetansebevisene dine.</li>
@@ -62,8 +63,11 @@
       <li>Meteorologisk institutt (<code>api.met.no</code>) for vær og soltider.</li>
     </ul>
     <p>Koordinatene til de lagrede stedene dine sendes til Meteorologisk institutt for å hente været når du åpner Steder eller et sted, når du spør Siri om et sted, når widgeten oppdaterer seg, og i bakgrunnen for steder der du har slått på varsel om godt flyvær. Navnene på stedene sendes ikke ut.</p>
+    <p>Når du sjekker et område eller åpner et lagret område, sendes midtpunktet til Meteorologisk institutt for vær og til Kartverket for nærmeste stedsnavn, på samme måte som ved en punktsjekk. Vurderingen i listen under Steder regnes ut på enheten. Hjørnene og navnet på området sendes ikke ut.</p>
     <p>Kartfliser lastes fra Kartverket (<code>cache.kartverket.no</code>) etter hvert som du flytter kartet, og søketekst sendes til Kartverkets stedsnavntjeneste (<code>ws.geonorge.no</code>) når du søker. Disse tjenestene ser IP-adressen din og forespørselen, som beskrevet i deres egne personvernerklæringer. Appen identifiserer seg mot MET med en teknisk «User-Agent» som inneholder appnavn, versjon og en kontaktadresse, slik MET krever.</p>
-    <p>Loggboken forlater bare enheten hvis du selv eksporterer den som CSV-fil. Da velger du i delingsmenyen hvor filen skal.</p>
+    <p>Loggboken forlater bare enheten hvis du selv eksporterer den som CSV-fil. Da velger du i delingsmenyen hvor filen skal. Områderapporter (PDF) og KML-filer forlater også bare enheten hvis du selv eksporterer dem. Kartet i PDF-rapporten lastes fra Kartverket (<code>cache.kartverket.no</code>) når du lager rapporten.</p>
+    <h2>Deling</h2>
+    <p>Når du trykker på Del i en sjekk, lager appen et bilde av sjekken og en lenke på enheten. Lenken inneholder koordinatene til punktet du deler, og ikke noe annet. Du velger selv i delingsmenyen hvor bildet og lenken skal, og ingenting sendes til utvikleren. Kartet på bildet hentes fra Kartverket (<code>cache.kartverket.no</code>), som når du flytter kartet. Velger du å lagre delingskortet i Bilder, legger appen bare til det ene bildet og leser aldri resten av bildebiblioteket ditt. Åpner noen lenken uten å ha appen, viser GitHub Pages en nettside som leser koordinatene i nettleseren. Siden har ingen analyseverktøy, sporing eller innhold fra tredjeparter, men GitHub ser IP-adressen og hele adressen, med koordinatene, som for resten av nettstedet.</p>
     <h2>Varsler</h2>
     <p>Påminnelser om kompetansebevis og varsler om godt flyvær lages på enheten. Det finnes ingen server som sender varsler. Varslene er av til du slår dem på, og du kan slå dem av igjen i appen eller i innstillingene til iOS.</p>
     <h2>Siri og Snarveier</h2>
@@ -88,6 +92,7 @@
     <ul>
       <li>your drones with name, class, weight and wind and temperature limits,</li>
       <li>saved spots with name and coordinates,</li>
+      <li>saved areas with name and shape (centre and radius, or the corners' coordinates),</li>
       <li>the logbook: time, duration, place and coordinates, drone, zones, weather, the checklist result and your notes,</li>
       <li>your checklist,</li>
       <li>your operator ID and the expiry dates of your certificates.</li>
@@ -102,8 +107,11 @@
       <li>the Norwegian Meteorological Institute (<code>api.met.no</code>) for weather and sun times.</li>
     </ul>
     <p>The coordinates of your saved spots are sent to the Norwegian Meteorological Institute to fetch the weather when you open Spots or a spot, when you ask Siri about a spot, when the widget updates, and in the background for spots where you turned on the good-weather notification. Spot names are not sent.</p>
+    <p>When you check an area or open a saved one, its centre is sent to the Norwegian Meteorological Institute for the weather and to Kartverket for the nearest place name, as for a point check. The verdict in the Spots list is worked out on the device. An area's corners and name are not sent.</p>
     <p>Map tiles are loaded from Kartverket (<code>cache.kartverket.no</code>) as you move the map, and search text is sent to Kartverket's place-name service (<code>ws.geonorge.no</code>) when you search. Those services see your IP address and the request, as described in their own privacy policies. The app identifies itself to MET with a technical User-Agent containing the app name, version and a contact address, as MET requires.</p>
-    <p>The logbook only leaves the device if you export it as a CSV file yourself. You then choose in the share sheet where the file goes.</p>
+    <p>The logbook only leaves the device if you export it as a CSV file yourself. You then choose in the share sheet where the file goes. Area reports (PDF) and KML files likewise leave the device only if you export them yourself. The map in the PDF report is loaded from Kartverket (<code>cache.kartverket.no</code>) when you make the report.</p>
+    <h2>Sharing</h2>
+    <p>When you tap Share on a check, the app makes an image of the check and a link on the device. The link contains the coordinates of the spot you share and nothing else. You choose in the share sheet where the image and the link go, and nothing is sent to the developer. The map on the image is loaded from Kartverket (<code>cache.kartverket.no</code>), as when you move the map. If you choose to save the share card to Photos, the app only adds that one image and never reads the rest of your photo library. If someone opens the link without the app, GitHub Pages shows a web page that reads the coordinates in their browser. The page has no analytics, tracking or third-party content, but GitHub sees the IP address and the full address, including the coordinates, as for the rest of the site.</p>
     <h2>Notifications</h2>
     <p>Certificate reminders and good-weather notifications are created on the device. There is no server that sends notifications. They are off until you turn them on, and you can turn them off again in the app or in iOS settings.</p>
     <h2>Siri and Shortcuts</h2>
