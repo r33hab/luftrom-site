@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="nb" data-lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Nothing leaves this page except the links the visitor taps: no web fonts, no third-party scripts, no analytics. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="apple-touch-icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../styles.css">
+<title>Luftrom – Kan jeg fly her?</title>
+<meta name="description" content="Et sted delt fra Luftrom, dronekartet for Norge. A spot shared from Luftrom, the drone map for Norway.">
+<meta property="og:title" content="Luftrom – Kan jeg fly her? · Can I fly here?">
+<meta property="og:description" content="Et sted delt fra Luftrom, dronekartet for Norge. · A spot shared from Luftrom, the drone map for Norway.">
+<meta property="og:image" content="https://r33hab.github.io/luftrom-site/assets/map-nb.jpg">
+<meta property="og:url" content="https://r33hab.github.io/luftrom-site/s/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<script src="share.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../assets/icon.png" alt="" width="34" height="34"><span>Luftrom</span></a>
+    <nav aria-label="Meny">
+      <div class="lang" role="group" aria-label="Språk / Language">
+        <button type="button" data-set="nb" aria-pressed="true" lang="nb">Norsk</button>
+        <button type="button" data-set="en" aria-pressed="false" lang="en">English</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap share">
+  <section id="spot" hidden>
+    <h1 data-lang="nb">Et delt sted</h1>
+    <h1 data-lang="en">A shared spot</h1>
+    <p class="coord" id="coord"></p>
+    <p data-lang="nb">Noen har delt en sjekk fra Luftrom. Åpne stedet i appen for å se sonene, terrenghøyden og flyværet der nå.</p>
+    <p data-lang="en">Someone shared a check from Luftrom. Open the spot in the app to see the zones, the terrain height and the flying weather there now.</p>
+    <div class="actions">
+      <a class="pill" id="open" href="../"><span data-lang="nb">Åpne i Luftrom</span><span data-lang="en">Open in Luftrom</span></a>
+    </div>
+  </section>
+
+  <section id="invalid" hidden>
+    <h1 data-lang="nb">Lenken er ikke gyldig</h1>
+    <h1 data-lang="en">This link is not valid</h1>
+    <p data-lang="nb">Lenken peker ikke på et gyldig sted. Be den som delte den, om å dele på nytt fra Luftrom.</p>
+    <p data-lang="en">The link does not point to a valid spot. Ask whoever shared it to share it again from Luftrom.</p>
+  </section>
+
+  <section class="get">
+    <p data-lang="nb">Har du ikke Luftrom? Appen viser de offisielle dronesonene i Norge, med terreng, vind og sol for punktet du sjekker.</p>
+    <p data-lang="en">Don't have Luftrom? The app shows Norway's official drone zones, with terrain, wind and sun for the spot you check.</p>
+    <div class="actions">
+      <a class="pill soon" href="https://apps.apple.com/app/id6814970717"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.9-.8-3.1-.8C6.6 7.4 4 9.4 4 13.1c0 1.2.2 2.4.7 3.6.6 1.6 2.6 5.4 4.7 5.3 1.1 0 1.9-.8 3.3-.8s2.1.8 3.4.8c2.1 0 3.9-3.5 4.5-5.1-2.8-1.3-4.2-2.6-4.2-4.3zM13.6 5.6c1.1-1.3.9-2.6.9-3-.9 0-2 .6-2.6 1.3-.6.7-1.1 1.8-.9 2.9 1 .1 2-.5 2.6-1.2z"/></svg><span data-lang="nb">Last ned fra App Store</span><span data-lang="en">Get it on the App Store</span></a>
+    </div>
+  </section>
+</main>
+</body>
+</html>
