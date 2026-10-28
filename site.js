@@ -21,30 +21,9 @@
   function onScrollTop() { top.classList.toggle("scrolled", scrollY > 8); }
   addEventListener("scroll", onScrollTop, { passive: true }); onScrollTop();
 
-  // Hero: play the check once on load; replay on demand.
-  var hero = document.querySelector(".hero"), stage = document.querySelector(".stage");
-  function playStage() { stage.classList.remove("play"); void stage.offsetWidth; stage.classList.add("play"); }
-  function play() {
-    if (!hero) return;
-    hero.classList.remove("play"); void hero.offsetWidth; hero.classList.add("play");
-    playStage();
-  }
-  if (hero && !reduce) {
-    requestAnimationFrame(function () { hero.classList.add("play"); });
-    // On phones the stage sits below the copy, so the check plays when it comes into view, not before.
-    var seen = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { playStage(); seen.disconnect(); } });
-    }, { threshold: 0.45 });
-    seen.observe(stage);
-  }
-  var replay = document.querySelector(".replay");
-  if (replay) replay.addEventListener("click", play);
-
-  // The contour band draws once on view. Everything else is simply there.
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
-  }, { rootMargin: "0px 0px -12% 0px", threshold: 0.05 });
-  document.querySelectorAll(".contours").forEach(function (el) { io.observe(el); });
+  // Hero: the headline rises once on load. The chart itself is world.js.
+  var flight = document.querySelector(".flight");
+  if (flight && !reduce) requestAnimationFrame(function () { flight.classList.add("play"); });
 
   // How it works: the visible step picks the phone state; the gauge climbs 0 to 120 m while it is stuck on screen.
   var steps = Array.prototype.slice.call(document.querySelectorAll(".step"));
