@@ -2,6 +2,20 @@
 
 All notable changes to the Luftrom support site. Newest first.
 
+## 2026-10-28
+### Added
+- Chart world hero (`world.js`, plain WebGL2, no libraries): a made-up stretch of coast as a topographic chart, pinned while you scroll. The sheet opens to full bleed, the zones rise as walls of airspace, a 120 m ceiling follows the ground and a 3D quadcopter climbs to it.
+- Spot check on the chart: click or tap anywhere for the verdict, zones, terrain height and max altitude, in a card (a bottom sheet on phones), marked as made-up terrain.
+- The pointer's trail reveals the airspace; on touch screens and at rest an airport radar sweep does it. A readout under the pointer gives grid square, height and zone.
+- Contour-line backdrop behind the rest of the page (`isolines.js`); a hill rises under the mouse, still on touch screens.
+- App Store links (hero, check card, contact) and a Smart App Banner for Safari on iPhone; the app is live.
+### Changed
+- Phone first: pixel ratio capped at 1.35, no MSAA, coarser mesh, 30 fps at rest, adaptive resolution and no layout reads per frame; the sheet sizes itself to the copy under it.
+- Without WebGL2 or JavaScript the hero shows the app screenshot; with reduced motion the chart is drawn once, fully revealed.
+- Legend swatches: a heavier outline for zones that need permission, as on the app's map.
+### Removed
+- The hero's phone animation and the contour band; the phone stays in "How it works".
+
 ## 2026-10-08
 ### Changed
 - Privacy policy: added saved flying areas (stored on the device, centre sent to MET and Kartverket for weather and a place name), KML/PDF exports, share cards and links (user-initiated, link carries only the chosen coordinate), and saving a share card to Photos (adds only that image, never reads the library).

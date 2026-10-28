@@ -18,8 +18,10 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://r33hab.github.io/luftrom-site/">
+<meta name="apple-itunes-app" content="app-id=6814970717">
 </head>
 <body>
+<canvas class="isolines" aria-hidden="true"></canvas>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="./"><img src="assets/icon.png" alt="" width="34" height="34"><span>Luftrom</span></a>
@@ -35,41 +37,79 @@
 </header>
 
 <main>
-  <section class="hero wrap">
-    <div class="copy">
-      <h1 class="h1" data-lang="nb"><span class="w" style="--i:0">Kan</span> <span class="w" style="--i:1">jeg</span> <span class="w" style="--i:2">fly</span> <span class="w" style="--i:3">her?</span></h1>
-      <h1 class="h1" data-lang="en"><span class="w" style="--i:0">Can</span> <span class="w" style="--i:1">I</span> <span class="w" style="--i:2">fly</span> <span class="w" style="--i:3">here?</span></h1>
-      <p class="lede" data-lang="nb">Velg et punkt på kartet. Luftrom svarer med Luftfartstilsynets offisielle soner, terrenghøyden, bakkevinden og soltidene, i ett trykk.</p>
-      <p class="lede" data-lang="en">Pick a spot on the map. Luftrom answers with the official zones, the terrain height, the ground wind and the sun times, in one tap.</p>
-      <p class="sub" data-lang="nb">For iPhone. Sonene og vurderingen fungerer uten nett.</p>
-      <p class="sub" data-lang="en">For iPhone. Zones and the verdict work offline.</p>
-      <div class="actions">
-        <span class="pill soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.9-.8-3.1-.8C6.6 7.4 4 9.4 4 13.1c0 1.2.2 2.4.7 3.6.6 1.6 2.6 5.4 4.7 5.3 1.1 0 1.9-.8 3.3-.8s2.1.8 3.4.8c2.1 0 3.9-3.5 4.5-5.1-2.8-1.3-4.2-2.6-4.2-4.3zM13.6 5.6c1.1-1.3.9-2.6.9-3-.9 0-2 .6-2.6 1.3-.6.7-1.1 1.8-.9 2.9 1 .1 2-.5 2.6-1.2z"/></svg><span data-lang="nb">Kommer på App Store</span><span data-lang="en">Coming to the App Store</span></span>
-        <a href="mailto:lersveenk@gmail.com" data-lang="nb">Skriv til oss</a>
-        <a href="mailto:lersveenk@gmail.com" data-lang="en">Write to us</a>
+  <section class="flight" id="top" aria-labelledby="flight-title">
+    <div class="stick">
+      <div class="window-box" aria-hidden="true"></div>
+      <div class="window">
+        <img class="still" src="assets/map-nb.jpg" width="660" height="1434" alt="" data-lang="nb">
+        <img class="still" src="assets/map-en.jpg" width="660" height="1434" alt="" data-lang="en">
+        <canvas id="world" tabindex="0" aria-label="Demokart over et oppdiktet stykke norskekyst med dronesoner."></canvas>
+        <svg class="hud-lines" aria-hidden="true"><line class="stem" x1="0" y1="0" x2="0" y2="0"/></svg>
+        <div class="hud" aria-hidden="true"></div>
+        <div class="cols" aria-hidden="true"></div>
+        <div class="rows" aria-hidden="true"></div>
+        <div class="probe" aria-hidden="true"></div>
       </div>
-    </div>
-    <div class="stage" id="demo">
-      <svg class="rings" viewBox="0 0 600 600" aria-hidden="true">
-        <circle cx="300" cy="300" r="290"/><circle cx="300" cy="300" r="290"/><circle cx="300" cy="300" r="290"/>
-      </svg>
-      <div class="phone" aria-hidden="true">
-        <img class="layer map" src="assets/map-nb.jpg" width="660" height="1434" alt="" data-lang="nb">
-        <img class="layer map" src="assets/map-en.jpg" width="660" height="1434" alt="" data-lang="en">
-        <div class="reticle"></div>
-        <img class="layer sheet" src="assets/sheet-nb.png" width="660" height="784" alt="" data-lang="nb">
-        <img class="layer sheet" src="assets/sheet-en.png" width="660" height="784" alt="" data-lang="en">
+      <div class="margins" aria-hidden="true">
+        <span class="m-tl"><span data-lang="nb">Luftrom · demokart</span><span data-lang="en">Luftrom · demo chart</span></span>
+        <span class="m-clock"><span class="clock">--:--:--</span> <span data-lang="nb">norsk tid</span><span data-lang="en">Norway time</span></span>
+        <span class="m-tr"><span data-lang="nb">Ekvidistanse 20 m</span><span data-lang="en">Contour interval 20 m</span></span>
+        <span class="m-side"><span data-lang="nb">Dronesoner · terreng · 120 m</span><span data-lang="en">Drone zones · terrain · 120 m</span></span>
+        <span class="m-side2"><span data-lang="nb">Ikke for navigasjon</span><span data-lang="en">Not for navigation</span></span>
+        <span class="scale"><i></i><b>1 km</b></span>
+        <span class="north"><svg viewBox="0 0 12 18" aria-hidden="true"><path d="M6 0 L11 18 L6 13 L1 18 Z"/></svg>N</span>
       </div>
-      <button class="replay" type="button"><span data-lang="nb">Spill av igjen</span><span data-lang="en">Play again</span></button>
+
+      <div class="copy">
+        <h1 class="h1" id="flight-title" data-lang="nb"><span class="w" style="--i:0">Kan</span> <span class="w" style="--i:1">jeg</span> <span class="w" style="--i:2">fly</span> <span class="w" style="--i:3">her?</span></h1>
+        <h1 class="h1" data-lang="en"><span class="w" style="--i:0">Can</span> <span class="w" style="--i:1">I</span> <span class="w" style="--i:2">fly</span> <span class="w" style="--i:3">here?</span></h1>
+        <p class="lede" data-lang="nb">Velg et punkt på kartet. Luftrom svarer med Luftfartstilsynets offisielle soner, terrenghøyden, bakkevinden og soltidene, i ett trykk.</p>
+        <p class="lede" data-lang="en">Pick a spot on the map. Luftrom answers with the official zones, the terrain height, the ground wind and the sun times, in one tap.</p>
+        <p class="sub" data-lang="nb">For iPhone. Sonene og vurderingen fungerer uten nett.</p>
+        <p class="sub" data-lang="en">For iPhone. Zones and the verdict work offline.</p>
+        <div class="actions">
+          <a class="pill" href="https://apps.apple.com/app/id6814970717"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.9-.8-3.1-.8C6.6 7.4 4 9.4 4 13.1c0 1.2.2 2.4.7 3.6.6 1.6 2.6 5.4 4.7 5.3 1.1 0 1.9-.8 3.3-.8s2.1.8 3.4.8c2.1 0 3.9-3.5 4.5-5.1-2.8-1.3-4.2-2.6-4.2-4.3zM13.6 5.6c1.1-1.3.9-2.6.9-3-.9 0-2 .6-2.6 1.3-.6.7-1.1 1.8-.9 2.9 1 .1 2-.5 2.6-1.2z"/></svg><span data-lang="nb">Last ned fra App Store</span><span data-lang="en">Get it on the App Store</span></a>
+          <a href="mailto:lersveenk@gmail.com" data-lang="nb">Skriv til oss</a>
+          <a href="mailto:lersveenk@gmail.com" data-lang="en">Write to us</a>
+        </div>
+        <p class="hint"><span class="fine" data-lang="nb">Beveg pekeren over kartet, så kommer luftrommet fram.</span><span class="fine" data-lang="en">Move your pointer over the chart to reveal the airspace.</span><span class="touch" data-lang="nb">Trykk på kartet for å sjekke et punkt.</span><span class="touch" data-lang="en">Tap the chart to check a spot.</span></p>
+      </div>
+
+      <div class="beats">
+        <article class="beat">
+          <h2 data-lang="nb">Kartet du ser. Luftrommet du ikke ser.</h2>
+          <h2 data-lang="en">The map you see. The airspace you don’t.</h2>
+          <p data-lang="nb">Luftrom legger Luftfartstilsynets dronesoner over kartet, i de samme fargene som i appen. Her reiser de seg som vegger av luftrom.</p>
+          <p data-lang="en">Luftrom lays the Civil Aviation Authority’s drone zones over the map, in the same colours as in the app. Here they rise as walls of airspace.</p>
+        </article>
+        <article class="beat">
+          <h2 data-lang="nb">120 meter over bakken.</h2>
+          <h2 data-lang="en">120 metres above the ground.</h2>
+          <p data-lang="nb">Grensen følger terrenget. For punktet du sjekker henter Luftrom terrenghøyden fra Kartverket og viser hva 120 meter over bakken blir i meter over havet.</p>
+          <p data-lang="en">The ceiling follows the terrain. For the spot you check, Luftrom fetches the terrain height from Kartverket and shows what 120 metres above the ground means in metres above sea level.</p>
+        </article>
+        <article class="beat">
+          <h2 data-lang="nb">Ett trykk. Ett svar.</h2>
+          <h2 data-lang="en">One tap. One answer.</h2>
+          <p data-lang="nb"><span class="fine">Prøv selv: klikk hvor som helst på kartet.</span><span class="touch">Prøv selv: trykk hvor som helst på kartet.</span><span class="more"> Svaret viser sonene, om du trenger tillatelse og hvor høyt du kan fly. I appen får du også vinden og soltidene.</span></p>
+          <p data-lang="en"><span class="fine">Try it: click anywhere on the chart.</span><span class="touch">Try it: tap anywhere on the chart.</span><span class="more"> The answer shows the zones, whether you need permission and how high you can fly. In the app you also get the wind and the sun times.</span></p>
+        </article>
+      </div>
+
+      <aside class="verdict" aria-live="polite">
+        <p class="v-kicker"></p>
+        <p class="v-title"></p>
+        <p class="v-sub"></p>
+        <ul class="v-zones"></ul>
+        <dl><div><dt></dt><dd></dd></div><div><dt></dt><dd></dd></div><div><dt></dt><dd></dd></div></dl>
+        <p class="v-note"></p>
+        <a class="v-get" href="https://apps.apple.com/app/id6814970717"><span data-lang="nb">Sjekk ekte punkter i appen</span><span data-lang="en">Check real spots in the app</span></a>
+      </aside>
+
+      <div class="alt" aria-hidden="true"><i class="rail"></i><i class="fill"></i><span class="t120">120 m</span><span class="t60">60 m</span><span class="t0">0 m</span><span class="mark">0 m</span></div>
+      <p class="cue"><span data-lang="nb">Rull for å ta av</span><span data-lang="en">Scroll to take off</span> · <a href="#slik" data-lang="nb">Hopp over</a><a href="#slik" data-lang="en">Skip</a></p>
     </div>
   </section>
-
-  <svg class="contours" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
-  <path d="M0 96 C 120 70, 200 110, 320 84 S 520 40, 640 70 S 860 118, 980 88 S 1140 56, 1200 74"/>
-  <path d="M0 72 C 140 50, 230 92, 350 66 S 540 22, 660 52 S 880 100, 1000 70 S 1150 40, 1200 56"/>
-  <path d="M0 50 C 160 32, 260 74, 380 48 S 560 6, 680 36 S 900 82, 1020 52 S 1160 24, 1200 40"/>
-  <path d="M0 30 C 180 14, 290 56, 410 30 S 590 -8, 710 20 S 920 64, 1040 34 S 1170 8, 1200 24"/>
-</svg>
 
   <section class="band" id="slik">
     <div class="wrap">
@@ -117,14 +157,14 @@
       <p data-lang="nb">Samme farger som i appen. Soner som krever tillatelse har kraftigere omriss på kartet.</p>
       <p data-lang="en">The same colours as in the app. Zones that require permission get a heavier outline on the map.</p>
       <ul class="legend">
-        <li><span class="sw" style="background:var(--z-airport)"></span><div><strong data-lang="nb">Lufthavn, tillatelse kreves</strong><strong data-lang="en">Airport, permission required</strong><small data-lang="nb">Innenfor kontrollsonen til en lufthavn. Tårnet må godkjenne flygingen.</small><small data-lang="en">Inside an airport's control zone. The tower must approve the flight.</small></div></li>
-        <li><span class="sw" style="background:var(--z-restricted)"></span><div><strong data-lang="nb">Restriksjonsområde</strong><strong data-lang="en">Restricted area</strong><small data-lang="nb">Område med særskilt forbud, for eksempel Oslo sentrum eller ambassader.</small><small data-lang="en">Area with a specific ban, such as central Oslo or embassies.</small></div></li>
-        <li><span class="sw" style="background:var(--z-prison)"></span><div><strong data-lang="nb">Fengsel</strong><strong data-lang="en">Prison</strong><small data-lang="nb">Flyging krever tillatelse fra Kriminalomsorgen.</small><small data-lang="en">Flying requires permission from the Correctional Service.</small></div></li>
-        <li><span class="sw" style="background:var(--z-nature-ban)"></span><div><strong data-lang="nb">Verneområde med droneforbud</strong><strong data-lang="en">Protected area, drones banned</strong><small data-lang="nb">Dispensasjon må søkes hos forvaltningsmyndigheten.</small><small data-lang="en">Apply to the managing authority for an exemption.</small></div></li>
-        <li><span class="sw" style="background:var(--z-sensor)"></span><div><strong data-lang="nb">Sensorforbud (NSM)</strong><strong data-lang="en">Sensor ban (NSM)</strong><small data-lang="nb">Forbud mot kamera og andre sensorer fra luften.</small><small data-lang="en">Aerial cameras and other sensors are banned.</small></div></li>
-        <li><span class="sw" style="background:var(--z-airport-info)"></span><div><strong data-lang="nb">Lufthavn, vis hensyn</strong><strong data-lang="en">Airport, take care</strong><small data-lang="nb">Nær en lufthavn eller landingsplass. Vær oppmerksom på lufttrafikk.</small><small data-lang="en">Near an airport or landing site. Watch for air traffic.</small></div></li>
-        <li><span class="sw" style="background:var(--z-danger)"></span><div><strong data-lang="nb">Fareområde</strong><strong data-lang="en">Danger area</strong><small data-lang="nb">Skytefelt, helikopterplasser og annen aktivitet som kan være farlig for droner.</small><small data-lang="en">Firing ranges, helipads and other activity that can endanger drones.</small></div></li>
-        <li><span class="sw" style="background:var(--z-nature)"></span><div><strong data-lang="nb">Verneområde</strong><strong data-lang="en">Protected area</strong><small data-lang="nb">Vernet natur. Vis hensyn til dyrelivet, og sjekk verneforskriften.</small><small data-lang="en">Protected nature. Respect wildlife and check the protection rules.</small></div></li>
+        <li><span class="sw permit" style="--c:var(--z-airport)"></span><div><strong data-lang="nb">Lufthavn, tillatelse kreves</strong><strong data-lang="en">Airport, permission required</strong><small data-lang="nb">Innenfor kontrollsonen til en lufthavn. Tårnet må godkjenne flygingen.</small><small data-lang="en">Inside an airport's control zone. The tower must approve the flight.</small></div></li>
+        <li><span class="sw permit" style="--c:var(--z-restricted)"></span><div><strong data-lang="nb">Restriksjonsområde</strong><strong data-lang="en">Restricted area</strong><small data-lang="nb">Område med særskilt forbud, for eksempel Oslo sentrum eller ambassader.</small><small data-lang="en">Area with a specific ban, such as central Oslo or embassies.</small></div></li>
+        <li><span class="sw permit" style="--c:var(--z-prison)"></span><div><strong data-lang="nb">Fengsel</strong><strong data-lang="en">Prison</strong><small data-lang="nb">Flyging krever tillatelse fra Kriminalomsorgen.</small><small data-lang="en">Flying requires permission from the Correctional Service.</small></div></li>
+        <li><span class="sw permit" style="--c:var(--z-nature-ban)"></span><div><strong data-lang="nb">Verneområde med droneforbud</strong><strong data-lang="en">Protected area, drones banned</strong><small data-lang="nb">Dispensasjon må søkes hos forvaltningsmyndigheten.</small><small data-lang="en">Apply to the managing authority for an exemption.</small></div></li>
+        <li><span class="sw permit" style="--c:var(--z-sensor)"></span><div><strong data-lang="nb">Sensorforbud (NSM)</strong><strong data-lang="en">Sensor ban (NSM)</strong><small data-lang="nb">Forbud mot kamera og andre sensorer fra luften.</small><small data-lang="en">Aerial cameras and other sensors are banned.</small></div></li>
+        <li><span class="sw" style="--c:var(--z-airport-info)"></span><div><strong data-lang="nb">Lufthavn, vis hensyn</strong><strong data-lang="en">Airport, take care</strong><small data-lang="nb">Nær en lufthavn eller landingsplass. Vær oppmerksom på lufttrafikk.</small><small data-lang="en">Near an airport or landing site. Watch for air traffic.</small></div></li>
+        <li><span class="sw" style="--c:var(--z-danger)"></span><div><strong data-lang="nb">Fareområde</strong><strong data-lang="en">Danger area</strong><small data-lang="nb">Skytefelt, helikopterplasser og annen aktivitet som kan være farlig for droner.</small><small data-lang="en">Firing ranges, helipads and other activity that can endanger drones.</small></div></li>
+        <li><span class="sw" style="--c:var(--z-nature)"></span><div><strong data-lang="nb">Verneområde</strong><strong data-lang="en">Protected area</strong><small data-lang="nb">Vernet natur. Vis hensyn til dyrelivet, og sjekk verneforskriften.</small><small data-lang="en">Protected nature. Respect wildlife and check the protection rules.</small></div></li>
       </ul>
     </div>
   </section>
@@ -180,6 +220,7 @@
           <p data-lang="nb">Spørsmål, feil i appen eller forslag: send en e-post, så svarer vi så fort vi kan.</p>
           <p data-lang="en">Questions, bugs or suggestions: send an email and we will answer as soon as we can.</p>
           <a class="mail" href="mailto:lersveenk@gmail.com">lersveenk@gmail.com</a>
+          <p class="store"><a class="pill" href="https://apps.apple.com/app/id6814970717"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.9-.8-3.1-.8C6.6 7.4 4 9.4 4 13.1c0 1.2.2 2.4.7 3.6.6 1.6 2.6 5.4 4.7 5.3 1.1 0 1.9-.8 3.3-.8s2.1.8 3.4.8c2.1 0 3.9-3.5 4.5-5.1-2.8-1.3-4.2-2.6-4.2-4.3zM13.6 5.6c1.1-1.3.9-2.6.9-3-.9 0-2 .6-2.6 1.3-.6.7-1.1 1.8-.9 2.9 1 .1 2-.5 2.6-1.2z"/></svg><span data-lang="nb">Last ned fra App Store</span><span data-lang="en">Get it on the App Store</span></a></p>
         </div>
         <div>
           <h3 data-lang="nb">Feil i en sone?</h3><h3 data-lang="en">Wrong zone data?</h3>
@@ -199,5 +240,7 @@
   </div>
 </footer>
 <script src="site.js"></script>
+<script src="world.js" defer></script>
+<script src="isolines.js" defer></script>
 </body>
 </html>
